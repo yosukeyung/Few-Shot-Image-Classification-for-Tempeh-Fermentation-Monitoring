@@ -1,39 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import logoVideo from '../assets/logo.mp4';
 
 const SplashScreen = ({ onComplete }) => {
-  const videoRef = useRef(null);
-  const [isMuted, setIsMuted] = useState(true); // Start muted for guaranteed autoplay
-
-  useEffect(() => {
-    const vid = videoRef.current;
-    if (!vid) return;
-
-    const handleVideoEnd = () => onComplete();
-    vid.addEventListener('ended', handleVideoEnd);
-
-    // Start muted → browser will allow autoplay
-    vid.muted = true;
-    vid.play().then(() => {
-      // Once playing, try to unmute for audio
-      vid.muted = false;
-      setIsMuted(false);
-    }).catch(() => {
-      // Still muted but video plays — that's fine
-    });
-
-    return () => {
-      vid.removeEventListener('ended', handleVideoEnd);
-    };
-  }, [onComplete]);
-
-  const toggleMute = () => {
-    const vid = videoRef.current;
-    if (!vid) return;
-    vid.muted = !vid.muted;
-    setIsMuted(vid.muted);
-  };
-
   return (
     <div
       style={{
@@ -48,8 +16,9 @@ const SplashScreen = ({ onComplete }) => {
       }}
     >
       <video
-        ref={videoRef}
         src={logoVideo}
+        autoPlay
+        muted
         playsInline
         onEnded={onComplete}
         style={{
@@ -60,39 +29,6 @@ const SplashScreen = ({ onComplete }) => {
           objectFit: 'contain',
         }}
       />
-
-      {/* Mute/unmute icon — small, unobtrusive, bottom-left */}
-      <button
-        onClick={toggleMute}
-        title={isMuted ? 'Unmute' : 'Mute'}
-        style={{
-          position: 'absolute',
-          bottom: '2rem',
-          left: '2rem',
-          background: 'rgba(255,255,255,0.08)',
-          border: '1px solid rgba(255,255,255,0.2)',
-          color: 'rgba(255,255,255,0.5)',
-          width: '2.25rem',
-          height: '2.25rem',
-          borderRadius: '50%',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          fontSize: '1rem',
-          cursor: 'pointer',
-          transition: 'all 0.2s ease',
-        }}
-        onMouseEnter={e => {
-          e.currentTarget.style.background = 'rgba(255,255,255,0.18)';
-          e.currentTarget.style.color = '#fff';
-        }}
-        onMouseLeave={e => {
-          e.currentTarget.style.background = 'rgba(255,255,255,0.08)';
-          e.currentTarget.style.color = 'rgba(255,255,255,0.5)';
-        }}
-      >
-        {isMuted ? '🔇' : '🔊'}
-      </button>
 
       {/* Skip button */}
       <button
@@ -110,15 +46,6 @@ const SplashScreen = ({ onComplete }) => {
           fontFamily: 'monospace',
           letterSpacing: '0.05em',
           cursor: 'pointer',
-          transition: 'all 0.2s ease',
-        }}
-        onMouseEnter={e => {
-          e.currentTarget.style.background = 'rgba(255,255,255,0.18)';
-          e.currentTarget.style.color = '#fff';
-        }}
-        onMouseLeave={e => {
-          e.currentTarget.style.background = 'rgba(255,255,255,0.08)';
-          e.currentTarget.style.color = 'rgba(255,255,255,0.5)';
         }}
       >
         SKIP
