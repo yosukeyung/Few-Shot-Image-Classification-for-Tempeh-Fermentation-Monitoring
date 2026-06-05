@@ -10,7 +10,7 @@
 > **A web-based artificial intelligence platform designed to classify tempe (fermented soybean) fermentation stages.**
 > _Built as a Computational Biology university final project!_ 🚀
 >
-> **🌟 Live Demo:** [**TempeClassify Web App**](tempeai.vercel.app) | [**API Inference**](https://huggingface.co/spaces/yosukeyun/tempe)
+> **🌟 Live Demo:** [**TempeClassify Web App**](https://tempeai.vercel.app/) | [**API Inference**](https://huggingface.co/spaces/yosukeyun/tempe)
 
 ## 📖 Project Overview
 
