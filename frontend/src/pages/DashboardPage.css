@@ -1,0 +1,205 @@
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.dashboard-welcome {
+  font-family: var(--font-headline);
+  font-size: 1.5rem;
+  color: var(--color-on-surface);
+  font-weight: 500;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.dashboard-engine-card {
+  grid-column: span 8;
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+  min-height: 220px;
+}
+
+.dashboard-engine-card::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  right: -20%;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 245, 255, 0.08) 0%, transparent 70%);
+  filter: blur(20px);
+  pointer-events: none;
+}
+
+.dashboard-metric-card {
+  grid-column: span 4;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 140px;
+}
+
+.dashboard-metric-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.dashboard-metric-title {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-outline);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.dashboard-metric-icon {
+  font-size: 1.25rem;
+  color: var(--color-secondary-fixed);
+}
+
+.dashboard-metric-value {
+  font-family: var(--font-headline);
+  font-size: 2.25rem;
+  font-weight: 600;
+  color: var(--color-on-surface);
+  line-height: 1;
+  margin-top: auto;
+}
+
+.dashboard-activity-card {
+  grid-column: span 5;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.dashboard-trend-card {
+  grid-column: span 7;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.activity-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.875rem 1rem;
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.activity-item:hover {
+  background: rgba(99, 247, 255, 0.03);
+  border-color: rgba(99, 247, 255, 0.1);
+  transform: translateX(4px);
+}
+
+.activity-specimen {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--color-on-surface);
+}
+
+.activity-time {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--color-outline);
+}
+
+/* Mini Bar Chart Styles */
+.chart-container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 120px;
+  width: 100%;
+  padding-top: 1rem;
+}
+
+.chart-bar-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+  gap: 0.5rem;
+}
+
+.chart-bar {
+  width: 24px;
+  background: linear-gradient(to top, rgba(161, 212, 148, 0.2), var(--color-primary));
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  transition: height 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.chart-bar:hover {
+  background: linear-gradient(to top, rgba(99, 247, 255, 0.2), var(--color-secondary-fixed));
+  box-shadow: 0 0 10px rgba(99, 247, 255, 0.3);
+}
+
+.chart-bar-value {
+  position: absolute;
+  top: -1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--color-secondary-fixed);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.chart-bar:hover .chart-bar-value {
+  opacity: 1;
+}
+
+.chart-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--color-outline);
+}
+
+@media (max-width: 1024px) {
+  .dashboard-engine-card,
+  .dashboard-metric-card,
+  .dashboard-activity-card,
+  .dashboard-trend-card {
+    grid-column: span 12;
+  }
+}

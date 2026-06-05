@@ -1,0 +1,103 @@
+.hud-viewport {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: #080f14;
+  border: 1px solid rgba(99, 247, 255, 0.1);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.8), 0 10px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Corner Bounding Markers */
+.hud-corner {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--color-secondary-fixed);
+  pointer-events: none;
+}
+
+.hud-corner-tl { top: 12px; left: 12px; border-right: none; border-bottom: none; }
+.hud-corner-tr { top: 12px; right: 12px; border-left: none; border-bottom: none; }
+.hud-corner-bl { bottom: 12px; left: 12px; border-right: none; border-top: none; }
+.hud-corner-br { bottom: 12px; right: 12px; border-left: none; border-top: none; }
+
+/* Grid Ticks & Overlays */
+.hud-crosshair {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  pointer-events: none;
+}
+
+.hud-crosshair::before,
+.hud-crosshair::after {
+  content: '';
+  position: absolute;
+  background-color: rgba(99, 247, 255, 0.3);
+}
+
+.hud-crosshair::before {
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+}
+
+.hud-crosshair::after {
+  left: 50%;
+  top: 0;
+  width: 1px;
+  height: 100%;
+}
+
+.hud-lens-tag {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--color-secondary-fixed);
+  letter-spacing: 0.05em;
+  background: rgba(14, 20, 26, 0.85);
+  border: 1px solid rgba(99, 247, 255, 0.15);
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-sm);
+  z-index: 10;
+}
+
+.hud-dimension-tag {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--color-outline);
+  background: rgba(14, 20, 26, 0.85);
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-sm);
+  z-index: 10;
+}
+
+.hud-status-tag {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 10;
+}
+
+.hud-scanning-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-secondary-fixed), transparent);
+  box-shadow: 0 0 12px var(--color-secondary-fixed);
+  opacity: 0.8;
+  pointer-events: none;
+  z-index: 5;
+}

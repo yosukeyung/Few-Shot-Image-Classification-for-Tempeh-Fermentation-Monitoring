@@ -1,0 +1,52 @@
+# Dependency directories
+node_modules/
+jspm_packages/
+web_modules/
+
+# Build outputs
+dist/
+build/
+out/
+.next/
+effect
+
+# Local env files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Python caches and virtual environments
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+env/
+.env/
+conda-env/
+
+# Large datasets & weight backups (optional, dataset is inside c:/School/ComBio/deploy_bio/dataset)
+dataset/
+deep_learning.jpg
+new_version.zip
+*.pdf
+api/support
+stitch_tempeh_fermentation_ai
+test_tempe.jpg
+
+# IDE and OS files
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.DS_Store
+Thumbs.db
+
+# Code
+api/test_model.py
+api/README.md

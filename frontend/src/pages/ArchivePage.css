@@ -1,0 +1,222 @@
+.archive-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+}
+
+.archive-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Filter & Sort Controls Row */
+.archive-controls {
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  border-radius: var(--radius-lg);
+}
+
+.filter-pills {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.filter-pill {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.375rem 0.875rem;
+  border-radius: var(--radius-full);
+  background: transparent;
+  border: 1px solid var(--color-outline-variant);
+  color: var(--color-on-surface-variant);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.filter-pill:hover {
+  border-color: var(--color-secondary-fixed);
+  color: var(--color-secondary-fixed);
+}
+
+.filter-pill.active {
+  background-color: rgba(99, 247, 255, 0.08);
+  border-color: var(--color-secondary-fixed);
+  color: var(--color-secondary-fixed);
+  box-shadow: 0 0 10px rgba(99, 247, 255, 0.1);
+}
+
+.archive-controls-divider {
+  width: 1px;
+  height: 24px;
+  background: var(--color-outline-variant);
+  flex-shrink: 0;
+}
+
+.sort-select {
+  background-color: var(--color-surface-container);
+  border: 1px solid var(--color-outline-variant);
+  color: var(--color-on-surface);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 0.375rem 0.75rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  outline: none;
+}
+
+/* Archive Card Grid */
+.archive-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.archive-card {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  position: relative;
+}
+
+.archive-card-img-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background-color: var(--color-surface-container-lowest);
+}
+
+/* Small corner mark overlays for archive cards */
+.archive-img-corner {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: 1.5px solid rgba(99, 247, 255, 0.4);
+}
+
+.archive-img-corner-tl { top: 6px; left: 6px; border-right: none; border-bottom: none; }
+.archive-img-corner-tr { top: 6px; right: 6px; border-left: none; border-bottom: none; }
+.archive-img-corner-bl { bottom: 6px; left: 6px; border-right: none; border-top: none; }
+.archive-img-corner-br { bottom: 6px; right: 6px; border-left: none; border-top: none; }
+
+.archive-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow), opacity var(--transition-normal);
+  opacity: 0.75;
+}
+
+.archive-card:hover .archive-card-img {
+  transform: scale(1.04);
+  opacity: 0.9;
+}
+
+.archive-card-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.archive-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.archive-card-id {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--color-on-surface);
+}
+
+.archive-card-confidence {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--color-secondary-fixed);
+}
+
+.archive-card-timestamp {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--color-outline);
+}
+
+/* Delete Button Overlay - shows on hover */
+.archive-delete-btn {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 32px;
+  height: 32px;
+  background: rgba(147, 0, 10, 0.7);
+  border: 1px solid rgba(255, 180, 171, 0.3);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+  color: var(--color-error);
+  z-index: 10;
+}
+
+.archive-card:hover .archive-delete-btn {
+  opacity: 1;
+}
+
+.archive-delete-btn:hover {
+  background-color: var(--color-error-container);
+  box-shadow: 0 0 10px rgba(255, 180, 171, 0.25);
+}
+
+/* Empty State */
+.archive-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 2rem;
+  color: var(--color-outline);
+  text-align: center;
+  gap: 1.25rem;
+}
+
+.archive-empty-icon {
+  font-size: 4rem;
+  opacity: 0.25;
+}
+
+/* Load More */
+.archive-load-more {
+  display: flex;
+  justify-content: center;
+  padding-top: 1rem;
+}
+
+@media (max-width: 1024px) {
+  .archive-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .archive-grid {
+    grid-template-columns: 1fr;
+  }
+}
