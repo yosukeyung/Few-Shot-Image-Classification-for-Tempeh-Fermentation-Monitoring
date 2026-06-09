@@ -224,12 +224,12 @@ export const LandingPage = () => {
                   Training deep neural classifiers for custom biological strains is often bottlenecked by a lack of large, labeled datasets.
                 </p>
                 <p className="body-md">
-                  Our system implements **Few-Shot Learning (FSL)** with prototypical networks, mapping culture visual parameters to a vector space where similar classes group together. This permits robust class separation with only a few support images.
+                  Our system implements <strong>Few-Shot Learning (FSL)</strong> with prototypical networks, mapping culture visual parameters to a vector space where similar classes group together. This permits robust class separation with only a few support images.
                 </p>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginTop: '0.5rem' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                     <span className="material-symbols-outlined" style={{ color: 'var(--color-secondary-fixed)' }}>check_circle</span>
-                    <span className="body-md" style={{ fontWeight: 500 }}>ResNet-18 Deep Feature Extractor</span>
+                    <span className="body-md" style={{ fontWeight: 500 }}>ResNet-50 Deep Feature Extractor</span>
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                     <span className="material-symbols-outlined" style={{ color: 'var(--color-secondary-fixed)' }}>check_circle</span>
