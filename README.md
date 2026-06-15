@@ -106,6 +106,10 @@ The React frontend is hosted on **Vercel**.
 - **Output Directory**: `dist`
 - Requires `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`, and `VITE_HF_API_URL` to be set in Vercel's Dashboard Environment Variables.
 
+### Database
+
+Supabase acts as the cloud database and authentication provider.
+
 ### Backend (Hugging Face Spaces)
 
 The FastAPI inference server is deployed to **Hugging Face Spaces** using the **Docker SDK** free CPU tier, utilizing the files in the `api/` directory.
