@@ -89,8 +89,8 @@ npm run dev
 Create a `.env` file in the `frontend` root:
 
 ```env
-VITE_SUPABASE_URL=https://your-supabase-id.supabase.co
-VITE_SUPABASE_ANON_KEY=your-supabase-anon-key
+VITE_SUPABASE_URL=YOUR_SUPABASE_URL
+VITE_SUPABASE_ANON_KEY=YOUR_SUPABASE_ANON_KEY
 VITE_HF_API_URL=http://localhost:8000 # or your Hugging Face Space URL
 ```
 
