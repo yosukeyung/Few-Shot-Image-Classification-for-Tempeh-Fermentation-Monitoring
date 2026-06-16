@@ -26,6 +26,15 @@ The system leverages a **Prototypical Neural Network** with a **ResNet-50 backbo
 - **🔒 Secure Session Logging**: Authenticated research dashboard powered by Supabase with full history archiving.
 - **🧠 Few-Shot Learning Protocol**: Robust categorization using only 10 support reference images per class, achieving **96.10% overall classification accuracy** on test datasets.
 
+## 🤝 My Role & Contributions
+
+Although this was a group project, I took full responsibility as the **Lead Full-Stack AI Developer**, independently designing and implementing the entire end-to-end architecture from the user interface to the machine learning inference engine. My specific contributions include:
+
+- **Frontend Development:** Built the entire single-page client application using Vite + React, integrating WebRTC for live specimen capturing and implementing the Biotech-focused Dark Glassmorphism UI.
+- **Backend & Model Deployment:** Developed the Python FastAPI server to serve the PyTorch model predictions and seamlessly deployed it to Hugging Face Spaces using the Docker SDK.
+- **Few-Shot Learning Implementation:** Engineered the Cosine Similarity metric with Learned Temperature scaling ($T = 9.8559$) and optimized the 10-shot support set evaluation pipeline.
+- **Database Architecture:** Configured Supabase Storage Buckets for image handling and PostgreSQL for secure session logging with Row-Level Security (RLS).
+
 ## 📐 System Architecture
 
 ```mermaid
