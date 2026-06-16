@@ -18,6 +18,12 @@
 
 The system leverages a **Prototypical Neural Network** with a **ResNet-50 backbone** trained using Few-Shot Learning (FSL) and Cosine Similarity. This approach ensures robust categorization with minimal training data.
 
+## 🎥 Video Demonstration
+
+[![Demo](./public/ttempeh.png)](https://drive.google.com/file/d/1OJk-9nkYJgF2oAzEMvA9K6Plb7Mw6X6M/view?usp=drive_link)
+
+*(Click the image above to watch the full demonstration)*
+
 ## ✨ Key Features
 
 - **🤖 AI Maturity Assessment**: Classify fermentation stages based on image analysis with high confidence.
