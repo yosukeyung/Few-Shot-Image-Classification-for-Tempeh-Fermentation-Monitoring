@@ -73,6 +73,8 @@ graph LR
 
 ## ⚙️ Local Installation & Development
 
+> **Note:** For security reasons, the `.env` file containing the production Supabase keys and API endpoints is not included in this repository. To run this locally, you must provide your own API keys or contact the author for a temporary testing environment.
+
 ### 1. Setup Backend API
 
 Navigate to the `api` folder:
@@ -96,8 +98,8 @@ npm run dev
 Create a `.env` file in the `frontend` root:
 
 ```env
-VITE_SUPABASE_URL=https://your-supabase-id.supabase.co
-VITE_SUPABASE_ANON_KEY=your-supabase-anon-key
+VITE_SUPABASE_URL=YOUR_SUPABASE_URL
+VITE_SUPABASE_ANON_KEY=YOUR_SUPABASE_ANON_KEY
 VITE_HF_API_URL=http://localhost:8000 # or your Hugging Face Space URL
 ```
 
@@ -112,6 +114,10 @@ The React frontend is hosted on **Vercel**.
 - **Build Command**: `npm run build`
 - **Output Directory**: `dist`
 - Requires `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`, and `VITE_HF_API_URL` to be set in Vercel's Dashboard Environment Variables.
+
+### Database
+
+Supabase acts as the cloud database and authentication provider.
 
 ### Backend (Hugging Face Spaces)
 
