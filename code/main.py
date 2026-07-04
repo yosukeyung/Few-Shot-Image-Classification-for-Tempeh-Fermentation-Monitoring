@@ -9,14 +9,14 @@ from sampler import EpisodicBatchSampler
 from model import PrototypicalNetwork
 
 def train():
-    # --- 1. REVISI HYPERPARAMETERS ---
+
     DATA_DIR = "./data"      
     N_WAY = 3                
-    K_SHOT = 10              # REVISI: Naik ke 10-Shot untuk menangkap lebih banyak variasi
+    K_SHOT = 10            
     Q_QUERY = 10             
     N_EPISODES = 25          
-    EPOCHS = 50              # REVISI: Naik ke 50 Epoch
-    LEARNING_RATE = 0.0005   # Turunkan sedikit LR karena ResNet-50 lebih sensitif
+    EPOCHS = 50            
+    LEARNING_RATE = 0.0005  
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"[*] Menggunakan device: {device}")
@@ -26,37 +26,24 @@ def train():
     
     sampler = EpisodicBatchSampler(labels=labels, n_episodes=N_EPISODES, 
                                    n_way=N_WAY, k_shot=K_SHOT, q_query=Q_QUERY)
-    # Tambahkan num_workers=2 dan pin_memory=True
+
     dataloader = DataLoader(dataset, batch_sampler=sampler, num_workers=2, pin_memory=True)
 
     model = PrototypicalNetwork(backbone_name='resnet50').to(device)
     
-    # ResNet memiliki layer dasar (conv1, bn1) dan 4 blok utama (layer1 s/d layer4).
-    # Kita kunci (freeze) layer dasar hingga layer2, dan hanya membiarkan 
-    # layer3 dan layer4 (high-level features) yang belajar tekstur miselium.
-    for name, param in model.backbone.named_parameters():
-        if "layer3" in name or "layer4" in name:
-            param.requires_grad = True  # Fine-tune layer atas
-        else:
-            param.requires_grad = False # Freeze layer awal/bawah
-    # -----------------------------------
+    for param in model.backbone.parameters():
+        param.requires_grad = True
 
-    # --- 2. REVISI LOSS FUNCTION ---
     criterion_ce = nn.CrossEntropyLoss()
     
-    # Triplet Loss khusus menggunakan Cosine Distance (1 - Cosine Similarity)
     criterion_triplet = nn.TripletMarginWithDistanceLoss(
         distance_function=lambda x, y: 1.0 - F.cosine_similarity(x, y),
         margin=0.2
     )
     
-    # Bobot untuk menyatukan dua loss
     TRIPLET_WEIGHT = 0.5
 
-    # --- REVISI OPTIMIZER ---
-    # Wajib memfilter parameter, agar Adam hanya meng-update bagian yang tidak di-freeze
-    trainable_params = filter(lambda p: p.requires_grad, model.parameters())
-    optimizer = optim.Adam(trainable_params, lr=LEARNING_RATE, weight_decay=1e-4)
+    optimizer = optim.Adam(model.parameters(), lr=LEARNING_RATE, weight_decay=1e-4)
     scheduler = optim.lr_scheduler.StepLR(optimizer, step_size=15, gamma=0.5)
 
     scaler = torch.cuda.amp.GradScaler()
